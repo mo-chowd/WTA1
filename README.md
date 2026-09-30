@@ -25,7 +25,7 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Base URL | `_______________________________` |
+| API Base URL | `http://api.open-notify.org/iss-now.json` |
 | Endpoint for current ISS location | `_______________________________` |
 | Sample response format (example JSON) |  
 ```
@@ -59,8 +59,8 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Provider (Choose one) | **OpenWeather, OpenWeatherMap (or other – provide details)** |
-| API Base URL | `_______________________________` |
+| API Provider | **OpenWeather** |
+| API Base URL | `https://api.openweathermap.org/data/2.5/weather` |
 | Endpoint for current weather | `_______________________________` |
 | Authentication method | `_______________________________` |
 | Required query parameters | `_______________________________` |

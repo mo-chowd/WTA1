@@ -11,12 +11,12 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Base URL | `_______________________________` |
-| Authentication Method | `_______________________________` |
-| Endpoint to list rooms | `_______________________________` |
-| Endpoint to get messages | `_______________________________` |
-| Endpoint to send message | `_______________________________` |
-| Required headers | `_______________________________` |
+| API Base URL | `https://webexapis.com/v1` |
+| Authentication Method | `bearer token` |
+| Endpoint to list rooms | `/rooms` |
+| Endpoint to get messages | `/messages` |
+| Endpoint to send message | `/messages` |
+| Required headers | `______________________________` |
 | Sample full GET or POST request | `_______________________________` |
 
 ---
@@ -26,7 +26,7 @@ This investigation sheet helps you gather key technical information from the thr
 | Criteria | Details |
 |---------|---------|
 | API Base URL | `http://api.open-notify.org/iss-now.json` |
-| Endpoint for current ISS location | `_______________________________` |
+| Endpoint for current ISS location | `/iss-now.json` |
 | Sample response format (example JSON) |  
 ```
 

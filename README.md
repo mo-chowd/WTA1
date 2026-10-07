@@ -16,7 +16,7 @@ This investigation sheet helps you gather key technical information from the thr
 | Endpoint to list rooms | `/rooms` |
 | Endpoint to get messages | `/messages` |
 | Endpoint to send message | `/messages` |
-| Required headers | `______________________________` |
+| Required headers | `bearer <token>` |
 | Sample full GET or POST request | `_______________________________` |
 
 ---
@@ -39,7 +39,7 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| Provider used (Choose one) | **LocationIQ / Mapbox/ OpenWeatherMap other -provide detail** |
+| Provider used | **LocationIQ / Mapbox/ OpenWeatherMap other -provide detail** |
 | API Base URL | `_______________________________` |
 | Endpoint for geocoding | `_______________________________` |
 | Endpoint for reverse geocoding | `_______________________________` |
@@ -62,7 +62,7 @@ This investigation sheet helps you gather key technical information from the thr
 | API Provider | **OpenWeather** |
 | API Base URL | `https://api.openweathermap.org/data/2.5/weather` |
 | Endpoint for current weather | `_______________________________` |
-| Authentication method | `_______________________________` |
+| Authentication method | `parameter "appid"` |
 | Required query parameters | `_______________________________` |
 | Sample JSON response (formatted example) |  
 ```

@@ -40,12 +40,12 @@ This investigation sheet helps you gather key technical information from the thr
 | Criteria | Details |
 |---------|---------|
 | Provider used | **LocationIQ / Mapbox/ OpenWeatherMap other -provide detail** |
-| API Base URL | `_______________________________` |
-| Endpoint for geocoding | `_______________________________` |
-| Endpoint for reverse geocoding | `_______________________________` |
-| Authentication method | `_______________________________` |
-| Required query parameters | `_______________________________` |
-| Sample request with latitude/longitude | `_______________________________` |
+| API Base URL | `https://eu1.locationiq.com/v1` EU region |
+| Endpoint for geocoding | `GET /search` |
+| Endpoint for reverse geocoding | `GET /reverse` |
+| Authentication method | `"key" query parameter` |
+| Required query parameters | `Reverse: key, lat, lon, format=json. Forward: key, q, format=json` |
+| Sample request with latitude/longitude | `https://us1.locationiq.com/v1/reverse?key=<LOCATIONIQ_KEY>&lat=51.2741&lon=-0.8812&format=json` |
 | Sample JSON response (formatted example) |  
 ```
 
@@ -61,9 +61,9 @@ This investigation sheet helps you gather key technical information from the thr
 |---------|---------|
 | API Provider | **OpenWeather** |
 | API Base URL | `https://api.openweathermap.org/data/2.5/weather` |
-| Endpoint for current weather | `_______________________________` |
+| Endpoint for current weather | `GET /weather` |
 | Authentication method | `parameter "appid"` |
-| Required query parameters | `_______________________________` |
+| Required query parameters | `	lat, lon, appid (optional: units=metric, lang)` |
 | Sample JSON response (formatted example) |  
 ```
 

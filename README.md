@@ -81,7 +81,7 @@ This investigation sheet helps you gather key technical information from the thr
   "clouds": { "all": 1 },
   "sys": { "country": "FR", "sunrise": 1792304098, "sunset": 1792342575 }
 }
----
+```
 
 ##  Epoch to Human Time Conversion (Python time module) (2 marks)
 
@@ -96,8 +96,7 @@ timestamp = 1760710000
 readable = datetime.fromtimestamp(timestamp, timezone.utc).strftime("%d %b %Y %H:%M:%S")
 print(readable)
 ```
-| Output (human-readable time) | `17 Oct 2025 14:06:40` |
----
+Output (human-readable time) `17 Oct 2025 14:06:40`
 
 ##  Extended Feature API ( 3 marks)
 

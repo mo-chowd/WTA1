@@ -17,9 +17,8 @@ This investigation sheet helps you gather key technical information from the thr
 | Endpoint to get messages | `/messages` |
 | Endpoint to send message | `/messages` |
 | Required headers | `bearer <token>` |
-| Sample full GET or POST request | `_______________________________` |
+| Sample full GET or POST request | `GET https://webexapis.com/v1/messages?roomId=<room id>&max=1` |
 
----
 
 ##  ISS Current Location API (2 marks)
 
@@ -29,31 +28,39 @@ This investigation sheet helps you gather key technical information from the thr
 | Endpoint for current ISS location | `/iss-now.json` |
 | Sample response format (example JSON) |  
 ```
-
+{
+  "message": "success",
+  "timestamp": 1792277645,
+  "iss_position": {
+    "latitude": "-45.8103",
+    "longitude": "-51.5680"
+  }
+}
 ```
-|
-
----
 
 ##  Geocoding API (4 marks)
 
 | Criteria | Details |
 |---------|---------|
-| Provider used | **LocationIQ / Mapbox/ OpenWeatherMap other -provide detail** |
-| API Base URL | `https://eu1.locationiq.com/v1` EU region |
-| Endpoint for geocoding | `GET /search` |
+| Provider used | **OpenWeatherMap Geocoding API** Uses same key as OpenWeather key |
+| API Base URL | `https://api.openweathermap.org/geo/1.0' |
+| Endpoint for geocoding | `GET /direct` |
 | Endpoint for reverse geocoding | `GET /reverse` |
-| Authentication method | `"key" query parameter` |
-| Required query parameters | `Reverse: key, lat, lon, format=json. Forward: key, q, format=json` |
-| Sample request with latitude/longitude | `https://us1.locationiq.com/v1/reverse?key=<LOCATIONIQ_KEY>&lat=51.2741&lon=-0.8812&format=json` |
+| Authentication method | API key in 'appid' query parameter |
+| Required query parameters | `Geocoding: q, appid. Reverse: lat, lon, appid` |
+| Sample request with latitude/longitude | `https://api.openweathermap.org/geo/1.0/reverse?lat=51.27&lon=-0.88&limit=1&appid=<API_KEY>` |
 | Sample JSON response (formatted example) |  
 ```
-
+[
+    {
+        "name": "Hart",
+        "lat": 51.2761671,
+        "lon": -0.8927989805623809,
+        "country": "GB",
+        "state": "England"
+    }
+]
 ```
-|
-
----
-
 
 ##  Weather API (3 marks)
 
@@ -66,24 +73,30 @@ This investigation sheet helps you gather key technical information from the thr
 | Required query parameters | `	lat, lon, appid (optional: units=metric, lang)` |
 | Sample JSON response (formatted example) |  
 ```
-
-```
-|
-
+{
+  "name": "Paris",
+  "weather": [{ "description": "clear sky" }],
+  "main": { "temp": 9.59, "humidity": 82 },
+  "wind": { "speed": 4.12 },
+  "clouds": { "all": 1 },
+  "sys": { "country": "FR", "sunrise": 1792304098, "sunset": 1792342575 }
+}
 ---
 
 ##  Epoch to Human Time Conversion (Python time module) (2 marks)
 
 | Criteria | Details |
 |---------|---------|
-| Library used | `_______________________________` |
-| Function used to convert epoch | `_______________________________` |
+| Library used | `datetime` |
+| Function used to convert epoch | `datetime.fromtimestamp() and .strftime()` |
 | Sample code to convert timestamp |  
-```  
 ```
-|
-| Output (human-readable time) | `_______________________________` |
-
+from datetime import datetime, timezone
+timestamp = 1760710000
+readable = datetime.fromtimestamp(timestamp, timezone.utc).strftime("%d %b %Y %H:%M:%S")
+print(readable)
+```
+| Output (human-readable time) | `17 Oct 2025 14:06:40` |
 ---
 
 ##  Extended Feature API ( 3 marks)

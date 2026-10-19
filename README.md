@@ -42,11 +42,11 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| Provider used | **OpenWeatherMap Geocoding API** Uses same key as OpenWeather key |
-| API Base URL | `https://api.openweathermap.org/geo/1.0' |
+| Provider used | `OpenWeatherMap Geocoding API: Uses same key as OpenWeather key` |
+| API Base URL | `https://api.openweathermap.org/geo/1.0` |
 | Endpoint for geocoding | `GET /direct` |
 | Endpoint for reverse geocoding | `GET /reverse` |
-| Authentication method | API key in 'appid' query parameter |
+| Authentication method | `API key in 'appid' query parameter` |
 | Required query parameters | `Geocoding: q, appid. Reverse: lat, lon, appid` |
 | Sample request with latitude/longitude | `https://api.openweathermap.org/geo/1.0/reverse?lat=51.27&lon=-0.88&limit=1&appid=<API_KEY>` |
 | Sample JSON response (formatted example) |  
@@ -66,7 +66,7 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Provider | **OpenWeather** |
+| API Provider | `OpenWeather` |
 | API Base URL | `https://api.openweathermap.org/data/2.5/weather` |
 | Endpoint for current weather | `GET /weather` |
 | Authentication method | `parameter "appid"` |

@@ -102,11 +102,11 @@ Output (human-readable time) `17 Oct 2025 14:06:40`
 
 | Criteria | Details |
 |---------|---------|
-| API Provider | '_________' |
-| API Base URL | `_______________________________` |
-| Endpoint | `_______________________________` |
-| Authentication method | `_______________________________` |
-| Required query parameters | `_______________________________` |
+| API Provider | `Nasa Astronomy Picture of The Day (APOD)` |
+| API Base URL | `https://api.nasa.gov` |
+| Endpoint | `GET /planetary/apod` |
+| Authentication method | `API key in "api_key" query parameter` |
+| Required query parameters | `api_key` |
 | Sample JSON response (formatted example) |  
 ```
 

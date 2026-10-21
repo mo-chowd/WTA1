@@ -36,7 +36,7 @@ def get_api_key(prompt, hardcoded_key):
 # =========================
 def get_rooms(token):
     url = "https://webexapis.com/v1/rooms"
-    headers = {"Authorisation": token}
+    headers = {"Authorization": token}
     response = requests.get(url, headers = headers)
 
     if response.status_code != 200:
@@ -64,7 +64,7 @@ def select_room(rooms):
 def get_latest_message(token, room_id):
     url = "https://webexapis.com/v1/messages"
     params = {"roomId": room_id, "max": 1}
-    headers = {"Authorisation": token}
+    headers = {"Authorization": token}
 
     response = requests.get(url, headers = headers, params = params)
 
@@ -83,7 +83,7 @@ def get_latest_message(token, room_id):
 def send_message(token, room_id, message):
     url = "https://webexapis.com/v1/messages"
     headers = {
-        "Authorisation": token,
+        "Authorization": token,
         "Content Type": "application/json"
     }
     data = {

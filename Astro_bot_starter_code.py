@@ -16,6 +16,7 @@ from datetime import datetime
 # =========================
 # CONFIGURATION FUNCTIONS
 # =========================
+
 def get_webex_token():
     choice = input("Use hard-coded Webex token? (y/n): ").lower()
     if choice == "n":
@@ -38,7 +39,7 @@ def get_rooms(token):
     headers = {"Authorisation": token}
     response = requests.get(url, headers = headers)
 
-    if response.status_code != 200
+    if response.status_code != 200:
         print("Error fetching rooms:", response.status_code)
         return []
 
@@ -95,9 +96,9 @@ def send_message(token, room_id, message):
 # WEATHER FUNCTIONS
 # =========================
 def get_city_coordinates(city, api_key):
-    url = #complete the URL to fetch city coordinates from OpenWeatherMap API
-    params = #complete the params dictionary to include the city name, limit, and the API key
-    response = requests.#complete(url, params=params)
+    url = "https://api.openweathermap.org/geo/1.0/direct"
+    params = {"q": city, "limit": 1, "appid": api_key}
+    response = requests.get(url, params = params)
 
     if response.status_code != 200:
         return None
@@ -110,20 +111,25 @@ def get_weather(city, api_key):
     location = get_city_coordinates(city, api_key)
 
     if not location:
-        return #complete the return statement to indicate that the city was not found
+        return "Could not find " + city
 
-    url = #complete the URL to fetch weather data from OpenWeatherMap API
-    params = #complete the params dictionary to include the latitude, longitude, units as metric, and the API key
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "lat": location["lat"],
+        "lon": location["lon"],
+        "units": "metric",
+        "appid": api_key
+    }
 
-    response = requests.#complete(url, params=params)
+    response = requests.get(url, params = params)
 
     if response.status_code != 200:
-        return #complete the return statement to indicate that the wheather weather data retrieved or not
+        return "Weather data unobtainable right now"
 
     weather = response.json()
 
     return (
-        #complete the return statement to format and return the weather information such as including city name, country, temperature, weather description, humidity, and wind speed
+        #complete
     )
 
 # =========================

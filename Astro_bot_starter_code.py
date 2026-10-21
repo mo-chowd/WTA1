@@ -129,17 +129,21 @@ def get_weather(city, api_key):
     weather = response.json()
 
     return (
-        #complete
+        f"Weather for {location["name"]}, {location["country"]}\n"
+        f"Conditions: {weather["weather"][0]["description"]}\n"
+        f"Temperature: {weather["main"]["temp"]} degrees celsius\n"
+        f"Humidity: {weather["main"]["humidity"]} percent\n"
+        f"Wind Speed: {weather["wind"]["speed"]} m/s"
     )
 
 # =========================
 # ISS FUNCTIONS
 # =========================
 def reverse_geocode(lat, lon, api_key):
-    url = #complete the URL to fetch reverse geocoding data from OpenWeatherMap API
-    params = #complete the params dictionary to include the latitude, longitude, limit, and the API key
+    url = "https://api.openweathermap.org/geo/1.0/reverse"
+    params = {"lat", lat, "lon", lon, "limit": 1, "appid": api_key}
 
-    response = requests.#complete(url, params=params)
+    response = requests.get(url, params=params)
 
     if response.status_code != 200:
         return None
@@ -149,27 +153,30 @@ def reverse_geocode(lat, lon, api_key):
 
 
 def get_iss_location(api_key):
-    url = #complete the URL to fetch ISS current location from the Open Notify API
+    url = "http://api.open-notify.org/iss-now.json"
 
-    response = requests.#complete(#complete)
+    response = requests.get(url)
 
     if response.status_code != 200:
-        return #complete the return statement to indicate whether ISS location retrieved or not
+        return "ISS location unobtainable right now"
 
     data = response.json()
 
-    lat = data[#complete][#complete]
-    lon = data[#complete][#complete]
+    lat = data["iss-position"]["latitude"]
+    lon = data["iss-position"]["longitude"]
 
     location = reverse_geocode(lat, lon, api_key)
 
     place = "Over Ocean / No Nearby City"
 
     if location:
-        place = #
+        place = f"{location["Name"]}, {location.get["Country", "Unknown"]}"
 
     return (
-        #complete the return statement to format and return the ISS location information including latitude, longitude, and place name
+        f"ISS current location\n"
+        f"Latitude {lat}\n"
+        f"Longitude: {lon}\n"
+        f"Over: {place}\n"
     )
 
 # =========================

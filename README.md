@@ -159,9 +159,9 @@ Provide a short example based on your implementation
 
 | Component   | Description and Example (Relate to your Bot) |
 |------------|----------------------------------|
-| **Model**  |  |
-| **View**   |  |
-| **Controller** |  |
+| **Model**  | Model gets the data from the API. The bot uses functions like `reverse_geocode()` to get data from ISS or OpenWeather |
+| **View**   | View is what the user can see. The bot outputs the data in a readable format to the user (for example "Weather for <name>, Weather for <country>  |
+| **Controller** | Controller reads the command and makes a decision. The bot has a `while True` loop in the `main()` part of the code |
 
 ---
 
@@ -169,11 +169,15 @@ Provide a short example based on your implementation
 
 Reflect on your AstroBot (400 words):
 
-- How effective is your bot in meeting the Astronomy Club’s needs?  
-- What design decisions worked well?  
-- What challenges did you face when integrating APIs?  
-- What security risks did you identify and how were they handled?  
-- How could your solution be improved in the future?  
+The bot is functioning. During testing on Webex, the `/weather` and `/iss` commands worked correctly in a readable format. I tested the weather for Paris using `/weather Paris` at 7:02pm which returned the conditions, temperature, humidity and wind speed. I also tested the ISS function (`/iss`) at 7:03pm which returned the latitude, longitude, position time and what it is over. The bot also gives an error response for incorrect commands or for incorrect or missing cities. However, it does not have an extended feature.
+
+The decisions that worked out well include using the same procedures for each API. The code uses `requests.get` which combines the URL and parameters into a full address and sends it to the API. It checks for the 200 response and reads the JSON. The same process was used for all APIs which was easy to repeat. Another good decision was using the Open Weather key for both weather and geocoding, which simplified the process. 
+
+While programming, I faced many challenges including incorrect spelling. I used `“Authorisation”` for the headers which gave a 401 error. I had to change the spelling to `“Authorization”` which fixed the error. I also wrote `iss-position` instead of `iss_position` for the latitude and longitude, which caused another error. Another issue was with the NASA APOD API, which gave a 500-server error, and I ended up not implementing it. The requests library was not initially working, so I had to install it with pip before I could use it. In general, understanding the logic of how the APIs work was difficult at first.
+
+The main security risk is with the API keys. On this readme file, the links use <API_KEY> (in the APIs used section) which is where my API key would have to go. The code only asks for the users API key upon runtime and is not stored. I implemented rate limiting with `time.sleep(5)` and `max: 1` which stops brute force attempts.
+
+Improvements to the bot include implementing an extended feature API such as NASA APOD or Astronomy API for stargazing. This was not included in the current code. Another improvement that can be made is including a timeout for a request. This would allow for the bot to stop waiting for a request if it does not receive anything within a time limit. The bot will just freeze up or slow down if the servers are slow or down (this would happen if the NASA APOD API was implemented and the servers were still having issues).
 
 ---
 

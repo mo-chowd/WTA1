@@ -123,32 +123,32 @@ In this section, evaluate how web technologies, architecture, and design pattern
 
 ###  Web Architecture – Client–Server Model (3 marks)
 
-Explain how the client–server model applies to your AstroBot:
+The client is the AstroBot program, because it sends the requests to the API for responses. The servers are Webex, OpenWeather and Open Notify, as they send the data that has been requested by the AstroBot program.
 
-- Identify the **client** 
-- Identify the **server(s)** 
-- Describe how data flows between:
-  - User, AstroBot and APIs
+- A user types a command into the Webex space
+- Every 5 seconds, the bot sends GET request to Webex to read the latest message
+- If the command is new, the bot sends the request to correct APIs
+- bot reads JSON response given from APIs and creates an output
+- Bot sends reply to Webex + POST request and user receives message on the chat
 
 Include a **simple block diagram** to illustrate this interaction.
 
 ####  Security Considerations: (3 marks )
-- Consider but not limiting to secure handling of API keys and tokens, API rate limiting, and Input validation (e.g., handling user commands safely), include examples from code where necessary to illustrate.
 
----
+The bot checks Webex every 5 seconds (with `time.sleep(5)`). It also only allows for one message at a time (with `"max": 1`). This reduces the unecessary requests.
+The code does not contain the Webex token or the API keys. The readme file also uses generic API_KEY instead of real API keys.
+The bot only responds to commands (that have `/`).
 
 ###  RESTful API Usage in Your Application (3 marks )
 
-Explain how REST APIs are used in your AstroBot: 
-
-- Describe how HTTP methods (GET, POST) are used  
-- Explain how your bot interacts with APIs (Webex, Weather, ISS, Geocoding)  
-- Describe how JSON responses are received and processed  
-
-Note: Relate your explanation directly to your code for higher grade. 
+- GET -> reads data. `get_rooms()`, `get_latest_message()`, `get_city_coordinates()`, `get_weather()`, `reverse_geocode()`, `get_iss_location` all use GET.
+- POST -> creates data. `send_message()` uses POST as JSON.
+- `/weather <city>` uses geocoding to turn the city into lat and longitude. `/iss` gets the ISS position and uses reverse geocoding to find the area it is above.
+- `response.json()` turns the JSON data from the API into Python.
 
 #### Security Considerations: (2 marks)
-- Check response status codes, Handling invalid or unexpected API responses, Avoiding excessive API calls
+
+The bot checks the response status code. If it is not 200, it gives a message that the data is currently unobtainable, and it will return an error message if the APIs cannot give the data. The bot only checks the messages every 5 seconds to see if there is a new one, and forgets all previous messages.
 
 ---
 
